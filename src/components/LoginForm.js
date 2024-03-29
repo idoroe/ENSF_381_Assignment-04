@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-function LoginForm({ switchComponent }) {
+function LoginForm({ switchComponentProp }) {
   // State to hold the username and password input values
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   // Function to handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = () => {
     console.log("Form submitted with username:", username, "and password:", password);
     // API call to authenticate the user
   };
@@ -36,7 +36,7 @@ function LoginForm({ switchComponent }) {
         <button type="submit">Login</button>
       </form>
 
-      <button onClick={switchComponent}>Switch to Signup</button>
+      <button onClick={switchComponentProp}>Switch to Signup</button>
     </div>
   );
 }

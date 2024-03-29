@@ -13,9 +13,9 @@ const LoginPage = () => {
       <Header />
       <div>
         {switchComponent ? (
-          <SignupForm switchComponent={() => setSwitchComponent(false)} />
+          <SignupForm switchComponentprop={() => setSwitchComponent(false)} />
         ) : (
-          <LoginForm switchComponent={() => setSwitchComponent(true)} />
+          <LoginForm switchComponentprop={() => setSwitchComponent(true)} />
         )}
       </div>
       <Footer />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function SignupForm({ switchComponent }) {
+function SignupForm({ switchComponentProp }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -62,7 +62,7 @@ function SignupForm({ switchComponent }) {
         <button type="submit" >Signup</button>
       </form>
 
-      <button onClick={switchComponent}>Switch to login</button>
+      <button onClick={switchComponentProp}>Switch to login</button>
     </div>
   );
 }
