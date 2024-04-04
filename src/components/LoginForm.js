@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function LoginForm({ switchComponent,setIsAuthenticated}) {
-  // State to hold the username and password input values
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
 
-  // Function to handle form submission
   const handleSubmit = async (event) => {
     console.log("Form submitted with username:", username, "and password:", password);
     event.preventDefault();
@@ -24,12 +22,18 @@ function LoginForm({ switchComponent,setIsAuthenticated}) {
 
       if (response.ok) {
         console.log('Authentification succesful');
+        localStorage.setItem("isLoggedIn", "true");
+        setIsAuthenticated(true);
         navigate('/products')
 
       } else {
         console.error('Authentification Failed:', data.message);
+        localStorage.removeItem("isLoggedIn");
+        setIsAuthenticated(false);
     } 
   }catch (error){
+    localStorage.removeItem("isLoggedIn");
+    setIsAuthenticated(false);
     console.error("Authentification Failed:", error.message);
     }
     // API call to authenticate the user

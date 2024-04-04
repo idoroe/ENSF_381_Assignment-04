@@ -4,10 +4,8 @@ import SignupForm from './SignupForm';
 import Header from './Header';
 import Footer from './Footer';
 
-const LoginPage = () => {
-  // Switch component state
+const LoginPage = ({ setIsAuthenticated }) => {
   const [switchComponent, setSwitchComponent] = useState(false);
-
 
   return (
     <>
@@ -16,7 +14,7 @@ const LoginPage = () => {
         {switchComponent ? (
           <SignupForm switchComponent={() => setSwitchComponent(false)} />
         ) : (
-          <LoginForm switchComponent={() => setSwitchComponent(true)} />
+          <LoginForm setIsAuthenticated={setIsAuthenticated} switchComponent={() => setSwitchComponent(true)} />
         )}
       </div>
       <Footer />
