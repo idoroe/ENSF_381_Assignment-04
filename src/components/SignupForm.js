@@ -1,19 +1,44 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SignupForm({ switchComponent }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [registrationSuccess, setRegistrationSuccess] = useState(false); 
 
   // Handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
       event.preventDefault();
+
     if (password !== confirmPassword) {
         alert("Passwords do not match");
+        return;
     }
 
-    console.log("Signup form submitted with:", { username, password, confirmPassword, email });
+    try{
+      console.log("Signup form submitted with:", { username, password, email });
+
+      const response = await fetch("http://localhost:5001/create-user", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username,password,email})
+      });
+
+      if (!response.ok){
+        const errorMessage = await response.json();
+        throw new Error(errorMessage.error);
+      }
+
+      console.log('User registered successfully!');
+      setRegistrationSuccess(true);
+      
+    }catch (error){
+      console.error('Registration Failed:', error.message);
+    }
     // API call to authenticate the user
   };
 
@@ -21,6 +46,7 @@ function SignupForm({ switchComponent }) {
 
   return (
     <div>
+      {registrationSuccess && <p>User Created Succesfully, return to login.</p>}
       <h3>Signup</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>

@@ -1,7 +1,7 @@
 // Product.js
 import React, { useState } from 'react';
 
-const Product = ({ product, onAddToCart }) => {
+const Product = ({ product, onAddToCart,}) => {
   const { id, name, price, image, description } = product;
   const [showDetails, setShowDetails] = useState(false);
   const [quantity, setQuantity] = useState(1);

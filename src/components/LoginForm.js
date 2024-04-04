@@ -1,13 +1,38 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function LoginForm({ switchComponent}) {
+function LoginForm({ switchComponent,setIsAuthenticated}) {
   // State to hold the username and password input values
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate()
 
   // Function to handle form submission
-  const handleSubmit = () => {
+  const handleSubmit = async (event) => {
     console.log("Form submitted with username:", username, "and password:", password);
+    event.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5001/auth-user", {
+        method: 'Post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username, password})
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Authentification succesful');
+        setIsAuthenticated(true);
+        navigate('/products')
+
+      } else {
+        console.error('Authentification Failed:', data.message);
+    } 
+  }catch (error){
+    console.error("Authentification Failed:", error.message);
+    }
     // API call to authenticate the user
   };
 
