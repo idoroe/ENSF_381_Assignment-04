@@ -24,7 +24,6 @@ function LoginForm({ switchComponent,setIsAuthenticated}) {
 
       if (response.ok) {
         console.log('Authentification succesful');
-        setIsAuthenticated(true);
         navigate('/products')
 
       } else {
