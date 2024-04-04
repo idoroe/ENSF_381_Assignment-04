@@ -8,6 +8,7 @@ const LoginPage = () => {
   // Switch component state
   const [switchComponent, setSwitchComponent] = useState(false);
 
+
   return (
     <>
       <Header />
