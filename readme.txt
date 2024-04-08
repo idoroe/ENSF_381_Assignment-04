@@ -1,3 +1,16 @@
-i made a python virtual environment in the root directory of the repo(ENSF_381_ASSIGNMENT-04) named it venv and added it to gitignore
- so our venv doesnt push to our repo when we make commits. You can also make yours too 
- so you can install flask and maybe other dependencies there to aid collaboration
+List of libraries used/imported in this full-stack project:
+
+react: version 18.2.0
+react-dom: version 18.2.0
+react-router-dom:version 6.22.3
+flask: version 4.0.0
+Cors: version 4.0.0
+
+
+Commands to install these libraries:
+
+npm install react
+npm install react-dom
+npm install react-router-dom
+pip install flask 
+pip install flask-cors
