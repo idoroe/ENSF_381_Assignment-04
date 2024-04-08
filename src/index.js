@@ -1,3 +1,8 @@
+// Assignment  : Assignment 5
+// Author(s)   : Elias Poitras-Whitecalf (30193066), Emmanuel Idoro(30134292)
+// Submission  : April 8th, 2024
+// Description : assignment 5
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
